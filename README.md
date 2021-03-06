@@ -21,3 +21,23 @@
     }
     
 ```
+# Write scenarios in .blackfire.yaml
+
+```bash
+scenarios: |
+    #!blackfire-player
+    scenario
+        name "Basic Visit"
+        visit url('/')
+            name "Homepage"
+            expect status_code() == 200
+            expect css("tbody.js-sightings-list tr").count() > 10
+            # won't work until we're using Blackfire environment
+            assert metrics.sql.queries.count 
+        click link("Log In")
+            name "Log in page"
+            expect status_code() == 200
+            
+            blackfire-player run .blackfire.yaml --ssl-no-verify --endpoint=https://localhost:8000
+
+```
