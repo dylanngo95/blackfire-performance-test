@@ -38,6 +38,6 @@ scenarios: |
             name "Log in page"
             expect status_code() == 200
             
-            blackfire-player run .blackfire.yaml --ssl-no-verify --endpoint=https://localhost:8000
+blackfire-player run .blackfire.yaml --ssl-no-verify --endpoint=https://localhost:8000
 
 ```
